@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Login">
      <widget class="QLabel" name="loginlabelname">
@@ -216,6 +216,32 @@
         <width>141</width>
         <height>27</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="regOK">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>200</y>
+        <width>98</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>OK</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="regCancel">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>200</y>
+        <width>98</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cancel</string>
       </property>
      </widget>
     </widget>
@@ -420,22 +446,22 @@
     <property name="title">
      <string>User</string>
     </property>
-    <addaction name="actionRegister_User"/>
-    <addaction name="actionLog_Out"/>
+    <addaction name="actionRegisterUser"/>
+    <addaction name="actionLogOut"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuGame">
     <property name="title">
      <string>Game</string>
     </property>
-    <addaction name="actionNew_Game"/>
-    <addaction name="actionEnd_Game"/>
+    <addaction name="actionNewGame"/>
+    <addaction name="actionEndGame"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
      <string>Edit</string>
     </property>
-    <addaction name="actionChange_password"/>
+    <addaction name="actionChangepw"/>
    </widget>
    <addaction name="menuUser"/>
    <addaction name="menuGame"/>
@@ -450,12 +476,12 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionRegister_User">
+  <action name="actionRegisterUser">
    <property name="text">
     <string>Register User</string>
    </property>
   </action>
-  <action name="actionLog_Out">
+  <action name="actionLogOut">
    <property name="text">
     <string>Log Out</string>
    </property>
@@ -465,17 +491,17 @@
     <string>Exit</string>
    </property>
   </action>
-  <action name="actionNew_Game">
+  <action name="actionNewGame">
    <property name="text">
     <string>New Game</string>
    </property>
   </action>
-  <action name="actionEnd_Game">
+  <action name="actionEndGame">
    <property name="text">
     <string>End Game</string>
    </property>
   </action>
-  <action name="actionChange_password">
+  <action name="actionChangepw">
    <property name="text">
     <string>Change password</string>
    </property>
