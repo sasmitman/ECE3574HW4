@@ -115,6 +115,7 @@ public:
         loginpwin = new QLineEdit(Login);
         loginpwin->setObjectName(QString::fromUtf8("loginpwin"));
         loginpwin->setGeometry(QRect(181, 98, 113, 27));
+        loginpwin->setEchoMode(QLineEdit::Password);
         loginlogin = new QPushButton(Login);
         loginlogin->setObjectName(QString::fromUtf8("loginlogin"));
         loginlogin->setGeometry(QRect(180, 170, 98, 27));
@@ -145,9 +146,11 @@ public:
         reglineEditpw1 = new QLineEdit(RegisterUser);
         reglineEditpw1->setObjectName(QString::fromUtf8("reglineEditpw1"));
         reglineEditpw1->setGeometry(QRect(180, 75, 141, 27));
+        reglineEditpw1->setEchoMode(QLineEdit::Password);
         reglineEditpw2 = new QLineEdit(RegisterUser);
         reglineEditpw2->setObjectName(QString::fromUtf8("reglineEditpw2"));
         reglineEditpw2->setGeometry(QRect(180, 110, 141, 27));
+        reglineEditpw2->setEchoMode(QLineEdit::Password);
         regOK = new QPushButton(RegisterUser);
         regOK->setObjectName(QString::fromUtf8("regOK"));
         regOK->setGeometry(QRect(180, 200, 98, 27));
@@ -230,7 +233,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
