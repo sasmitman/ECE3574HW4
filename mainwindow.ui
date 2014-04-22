@@ -27,7 +27,7 @@
      <number>3</number>
     </property>
     <widget class="QWidget" name="Login">
-     <widget class="QLabel" name="label_name">
+     <widget class="QLabel" name="loginlabelname">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -40,7 +40,7 @@
        <string>User Name</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_password">
+     <widget class="QLabel" name="loginlabelpassword">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -53,7 +53,7 @@
        <string>Password</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="user_in">
+     <widget class="QLineEdit" name="loginuserin">
       <property name="geometry">
        <rect>
         <x>181</x>
@@ -63,7 +63,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="password_in">
+     <widget class="QLineEdit" name="loginpwin">
       <property name="geometry">
        <rect>
         <x>181</x>
@@ -73,7 +73,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="push_login">
+     <widget class="QPushButton" name="loginlogin">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -86,7 +86,7 @@
        <string>Login</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="push_exit">
+     <widget class="QPushButton" name="loginexit">
       <property name="geometry">
        <rect>
         <x>280</x>
@@ -101,7 +101,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="RegisterUser">
-     <widget class="QLabel" name="label_user">
+     <widget class="QLabel" name="reglabeluser">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -114,7 +114,7 @@
        <string>User Name</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_password_2">
+     <widget class="QLabel" name="reglabelpassword">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -127,7 +127,7 @@
        <string>Password</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_pw2">
+     <widget class="QLabel" name="reglabelpw2">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -140,7 +140,7 @@
        <string>Re-Enter Password</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_color">
+     <widget class="QLabel" name="reglabelcolor">
       <property name="geometry">
        <rect>
         <x>21</x>
@@ -153,7 +153,7 @@
        <string>Color</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comb_color">
+     <widget class="QComboBox" name="regcombcolor">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -188,7 +188,7 @@
        </property>
       </item>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_user">
+     <widget class="QLineEdit" name="reglineEdituser">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -198,7 +198,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_pw1">
+     <widget class="QLineEdit" name="reglineEditpw1">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -208,7 +208,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_pw2">
+     <widget class="QLineEdit" name="reglineEditpw2">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -220,7 +220,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="Welcome">
-     <widget class="QPushButton" name="pushButton_change">
+     <widget class="QPushButton" name="wchangepw">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -233,7 +233,7 @@
        <string>Change Password</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_start">
+     <widget class="QPushButton" name="wstart">
       <property name="geometry">
        <rect>
         <x>172</x>
@@ -246,7 +246,7 @@
        <string>Start Game</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_exit">
+     <widget class="QPushButton" name="wexit">
       <property name="geometry">
        <rect>
         <x>280</x>
@@ -261,7 +261,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="change_password">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="oldpasslabel">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -274,7 +274,7 @@
        <string>Password (Old)</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="newpasslabel">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -287,7 +287,7 @@
        <string>Password (New)</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="newpassreenter">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -300,7 +300,7 @@
        <string>Re-Enter Password</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="changecolor">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -313,7 +313,7 @@
        <string>Color</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="changecolorbox">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -348,7 +348,7 @@
        </property>
       </item>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="changeoldpwin">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -358,7 +358,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="changenewpwin">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -368,7 +368,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="changerepwin">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -378,7 +378,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="changeok">
       <property name="geometry">
        <rect>
         <x>170</x>
@@ -391,7 +391,7 @@
        <string>OK</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="changecancel">
       <property name="geometry">
        <rect>
         <x>280</x>
