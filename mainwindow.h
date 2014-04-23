@@ -25,6 +25,10 @@ private slots:
     void on_actionRegisterUser_triggered();//Register user menu
     void on_actionExit_triggered();        //Exit
     void on_actionLogOut_triggered();       //Logout
+    //Game menu slots
+    void on_actionNewGame_triggered();      //new game
+    //Edit slots
+    void on_actionChangepw_triggered();     //change pw
     //Login page
     void on_loginlogin_clicked();//Login button
     void on_loginexit_clicked();//Exit button

@@ -61,6 +61,7 @@ public:
     QPushButton *wchangepw;
     QPushButton *wstart;
     QPushButton *wexit;
+    QLabel *welcomelabel;
     QWidget *change_password;
     QLabel *oldpasslabel;
     QLabel *newpasslabel;
@@ -171,6 +172,15 @@ public:
         wexit = new QPushButton(Welcome);
         wexit->setObjectName(QString::fromUtf8("wexit"));
         wexit->setGeometry(QRect(280, 190, 98, 27));
+        welcomelabel = new QLabel(Welcome);
+        welcomelabel->setObjectName(QString::fromUtf8("welcomelabel"));
+        welcomelabel->setGeometry(QRect(20, 30, 321, 91));
+        QFont font;
+        font.setPointSize(20);
+        font.setBold(true);
+        font.setItalic(true);
+        font.setWeight(75);
+        welcomelabel->setFont(font);
         stackedWidget->addWidget(Welcome);
         change_password = new QWidget();
         change_password->setObjectName(QString::fromUtf8("change_password"));
@@ -244,7 +254,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -280,6 +290,7 @@ public:
         wchangepw->setText(QApplication::translate("MainWindow", "Change Password", 0, QApplication::UnicodeUTF8));
         wstart->setText(QApplication::translate("MainWindow", "Start Game", 0, QApplication::UnicodeUTF8));
         wexit->setText(QApplication::translate("MainWindow", "Exit", 0, QApplication::UnicodeUTF8));
+        welcomelabel->setText(QString());
         oldpasslabel->setText(QApplication::translate("MainWindow", "Password (Old)", 0, QApplication::UnicodeUTF8));
         newpasslabel->setText(QApplication::translate("MainWindow", "Password (New)", 0, QApplication::UnicodeUTF8));
         newpassreenter->setText(QApplication::translate("MainWindow", "Re-Enter Password", 0, QApplication::UnicodeUTF8));

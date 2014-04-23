@@ -100,6 +100,20 @@ void MainWindow::on_actionLogOut_triggered()
     }
 }
 
+void MainWindow::on_actionNewGame_triggered()
+{
+    if (current_user == "")
+        QMessageBox::information(this, "ERROR", "User is not signed in");
+}
+
+void MainWindow::on_actionChangepw_triggered()
+{
+    if (current_user == "")
+        QMessageBox::information(this, "ERROR", "User is not signed in");
+    else
+        changePage(3);
+}
+
 void MainWindow::on_regOK_clicked()
 {
     //Converting info from lineEdit boxes to text
@@ -143,6 +157,7 @@ void MainWindow::on_loginlogin_clicked()
         if(database.value(user).at(0) == password)
         {   current_user =user;
             ui->changelabel->setText("Changing password for "+current_user);
+            ui->welcomelabel->setText("Welcome "+current_user);
             changePage(2);
         }
         else
@@ -198,5 +213,5 @@ void MainWindow::on_changeok_clicked()
 
 void MainWindow::on_changecancel_clicked()
 {
-    QApplication::exit();
+    changePage(2);
 }
