@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,15 +35,17 @@ static const uint qt_meta_data_MainWindow[] = {
       72,   11,   11,   11, 0x08,
      100,   11,   11,   11, 0x08,
      129,   11,   11,   11, 0x08,
-     159,   11,   11,   11, 0x08,
-     183,   11,   11,   11, 0x08,
-     206,   11,   11,   11, 0x08,
-     225,   11,   11,   11, 0x08,
-     248,   11,   11,   11, 0x08,
-     271,   11,   11,   11, 0x08,
-     290,   11,   11,   11, 0x08,
-     310,   11,   11,   11, 0x08,
-     332,   11,   11,   11, 0x08,
+     158,   11,   11,   11, 0x08,
+     188,   11,   11,   11, 0x08,
+     212,   11,   11,   11, 0x08,
+     235,   11,   11,   11, 0x08,
+     254,   11,   11,   11, 0x08,
+     277,   11,   11,   11, 0x08,
+     300,   11,   11,   11, 0x08,
+     319,   11,   11,   11, 0x08,
+     339,   11,   11,   11, 0x08,
+     361,   11,   11,   11, 0x08,
+     387,   11,   11,   11, 0x08,
 
        0        // eod
 };
@@ -53,12 +55,14 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_actionExit_triggered()\0"
     "on_actionLogOut_triggered()\0"
     "on_actionNewGame_triggered()\0"
+    "on_actionEndGame_triggered()\0"
     "on_actionChangepw_triggered()\0"
     "on_loginlogin_clicked()\0on_loginexit_clicked()\0"
     "on_regOK_clicked()\0on_regCancel_clicked()\0"
     "on_wchangepw_clicked()\0on_wexit_clicked()\0"
     "on_wstart_clicked()\0on_changeok_clicked()\0"
     "on_changecancel_clicked()\0"
+    "on_gameend_clicked()\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -71,16 +75,18 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->on_actionExit_triggered(); break;
         case 2: _t->on_actionLogOut_triggered(); break;
         case 3: _t->on_actionNewGame_triggered(); break;
-        case 4: _t->on_actionChangepw_triggered(); break;
-        case 5: _t->on_loginlogin_clicked(); break;
-        case 6: _t->on_loginexit_clicked(); break;
-        case 7: _t->on_regOK_clicked(); break;
-        case 8: _t->on_regCancel_clicked(); break;
-        case 9: _t->on_wchangepw_clicked(); break;
-        case 10: _t->on_wexit_clicked(); break;
-        case 11: _t->on_wstart_clicked(); break;
-        case 12: _t->on_changeok_clicked(); break;
-        case 13: _t->on_changecancel_clicked(); break;
+        case 4: _t->on_actionEndGame_triggered(); break;
+        case 5: _t->on_actionChangepw_triggered(); break;
+        case 6: _t->on_loginlogin_clicked(); break;
+        case 7: _t->on_loginexit_clicked(); break;
+        case 8: _t->on_regOK_clicked(); break;
+        case 9: _t->on_regCancel_clicked(); break;
+        case 10: _t->on_wchangepw_clicked(); break;
+        case 11: _t->on_wexit_clicked(); break;
+        case 12: _t->on_wstart_clicked(); break;
+        case 13: _t->on_changeok_clicked(); break;
+        case 14: _t->on_changecancel_clicked(); break;
+        case 15: _t->on_gameend_clicked(); break;
         default: ;
         }
     }
@@ -119,9 +125,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 16;
     }
     return _id;
 }

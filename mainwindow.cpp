@@ -9,6 +9,9 @@
 #include <QTextStream>
 #include <QFile>
 #include <QDebug>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QPen>
 
 /*
 0 = login page
@@ -167,6 +170,13 @@ void MainWindow::on_actionNewGame_triggered()
 
 }
 
+void MainWindow::on_actionEndGame_triggered()
+{
+    changePage(2);
+    initialize();
+    welcome_init();
+}
+
 void MainWindow::on_actionChangepw_triggered()
 {
     changePage(3);//change password page
@@ -185,10 +195,18 @@ void MainWindow::on_regOK_clicked()
     if(database.contains(user))
     {
         QMessageBox::information(this, "ERROR", "User already exists!");
+        ui->reglineEdituser->clear();
+        ui->reglineEditpw1->clear();
+        ui->reglineEditpw2->clear();
+        ui->regcombcolor->clear();
     }
     else if (pw1 != pw2)
     {
         QMessageBox::information(this, "ERROR", "Passwords do not match!");
+        ui->reglineEdituser->clear();
+        ui->reglineEditpw1->clear();
+        ui->reglineEditpw2->clear();
+        ui->regcombcolor->clear();
     }
     else
     {
@@ -201,6 +219,10 @@ void MainWindow::on_regOK_clicked()
         changePage(0);
         initialize();
         login_init();
+        ui->reglineEdituser->clear();
+        ui->reglineEditpw1->clear();
+        ui->reglineEditpw2->clear();
+        ui->regcombcolor->clear();
     }
 }
 
@@ -225,6 +247,8 @@ void MainWindow::on_loginlogin_clicked()
             changePage(2);
             initialize();
             welcome_init();
+            ui->loginuserin->clear();
+            ui->loginpwin->clear();
         }
         else
             QMessageBox::information(this, "ERROR", "Wrong username or password");
@@ -257,6 +281,7 @@ void MainWindow::on_wstart_clicked()
     changePage(4);
     initialize();
     game_init();
+    ui->gameuser->setText(current_user);
 }
 
 void MainWindow::on_changeok_clicked()
@@ -277,10 +302,22 @@ void MainWindow::on_changeok_clicked()
             login_init();
         }
         else
+        {
             QMessageBox::information(this, "ERROR", "Passwords do not match");
+            ui->changenewpwin->clear();
+            ui->changerepwin->clear();
+            ui->changeoldpwin->clear();
+
+        }
     }
     else
+    {
         QMessageBox::information(this, "ERROR", "Incorrect password");
+        ui->changenewpwin->clear();
+        ui->changerepwin->clear();
+        ui->changeoldpwin->clear();
+
+    }
 }
 
 void MainWindow::on_changecancel_clicked()
@@ -288,4 +325,27 @@ void MainWindow::on_changecancel_clicked()
     changePage(2);
     initialize();
     welcome_init();
+}
+
+
+void MainWindow::on_gameend_clicked()
+{
+    changePage(2);
+    initialize();
+    welcome_init();
+}
+
+void MainWindow::paintEvent(QPaintEvent * e)
+{
+QPainter painter(this);
+QPen linePen(Qt::red);
+linePen.setWidth(80);
+
+if (ui->stackedWidget->currentIndex() == 4)
+{
+painter.drawLine(54,80,54,200);
+painter.drawLine(95,80,95,200);
+painter.drawLine(15,115,147,115);
+painter.drawLine(15,155,147,155);
+}
 }

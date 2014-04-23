@@ -24,7 +24,9 @@ public:
     void reg_init();    //Initializes register user menu
     void welcome_init();//Initializes welcome user menu
     void change_init(); //Initialize change password menu
-    void game_init();   //
+    void game_init();   //Initialize game menu
+
+    void paintEvent(QPaintEvent * e);    //Draw tic-tac-toe grid
 
 
 private slots:
@@ -34,6 +36,7 @@ private slots:
     void on_actionLogOut_triggered();       //Logout
     //Game menu slots
     void on_actionNewGame_triggered();      //new game
+    void on_actionEndGame_triggered();      //end game
     //Edit slots
     void on_actionChangepw_triggered();     //change pw
     //Login page
@@ -49,6 +52,8 @@ private slots:
     //Change password slots
     void on_changeok_clicked();//OK button
     void on_changecancel_clicked();//Cancel button
+    //Game slots
+    void on_gameend_clicked();
 private:
     Ui::MainWindow *ui;
     QMap<QString, QVector<QString> > database;
