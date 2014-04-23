@@ -116,13 +116,14 @@ void MainWindow::readFile()
         QStringList splitter = line.split("::");//Splitting to name and date
         QString user = splitter[0];//Getting username
         QString password = splitter[1];//Getting password
-        QString color = splitter[2];//Getting color
+        QString color = splitter[2].simplified();//Getting color
         QVector<QString> temp;
         temp.append(password);
         temp.append(color);
         database.insert(user, temp);
         temp.clear();
     }
+    input.close();
 }
 
 void MainWindow::writeTo()
@@ -351,6 +352,11 @@ void MainWindow::on_p1_clicked()
     ui->p1->setDisabled(1);
 }
 
+//void MainWindow::on_p1_clicked()
+//{
+
+//}
+
 void MainWindow::paintEvent(QPaintEvent * e)
 {
     QPainter painter(this);
@@ -369,7 +375,7 @@ void MainWindow::paintEvent(QPaintEvent * e)
 
 void MainWindow::reset()
 {
-\
+    \
     ui->p1->setText("");
     ui->p2->setText("");
     ui->p3->setText("");
@@ -389,7 +395,7 @@ void MainWindow::reset()
     ui->p7->setEnabled(1);
     ui->p8->setEnabled(1);
     ui->p9->setEnabled(1);
-
+    //Default board
     for(int i=0; i < 3; i++)
     {
         for(int j = 0; j < 3; j++)
@@ -401,7 +407,215 @@ void MainWindow::reset()
 
 void MainWindow::update()
 {
-ui->userscore->setText(QString::number(user_score));
-ui->compscore->setText(QString::number(comp_score));
-ui->drawscore->setText(QString::number(draw_score));
+    ui->userscore->setText(QString::number(user_score));
+    ui->compscore->setText(QString::number(comp_score));
+    ui->drawscore->setText(QString::number(draw_score));
+}
+
+void MainWindow::endGame()
+{
+    ui->p1->setDisabled(1);
+    ui->p2->setDisabled(1);
+    ui->p3->setDisabled(1);
+    ui->p4->setDisabled(1);
+    ui->p5->setDisabled(1);
+    ui->p6->setDisabled(1);
+    ui->p7->setDisabled(1);
+    ui->p8->setDisabled(1);
+    ui->p9->setDisabled(1);
+}
+
+void MainWindow::calculate()
+{
+    //check diagonals
+    if((board[0][0] + board[1][1] + board[2][2]) > 1) return 4;
+    if((board[0][2] + board[1][1] + board[2][0]) > 1) return -4;
+
+    int total = 0;
+    //check rows
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            total += board[i][j];
+        }
+        if(total > 1) return i+1;
+        total = 0;
+    }
+
+    //check columns
+    total = 0;
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            total += board[j][i];
+        }
+        if(total > 1) return -(i+1);
+        total = 0;
+    }
+    return 0;   //return 0 if no close wins
+}
+
+void MainWindow::checkwinner() //Checks to see if there is a winner
+
+{
+    //Checking 1-9 diagonal
+    if ((board[0][0]+board[1][1]+board[2][2])==3)
+        return 1;
+    else if ((board[0][0]+board[1][1]+board[2][2])==-3)
+        return -1;
+    //Checking 3-6 diagonal
+    if ((board[0][2]+board[1][1]+board[2][0])==3)
+        return 1;
+    else if ((board[0][2]+board[1][1]+board[2][0])==-3)
+        return -1;
+
+    //Checking rows
+    //1-3 row
+    if ((board[0][0]+board[0][1]+board[0][2])==3)
+        return 1;
+    else if ((board[0][0]+board[0][1]+board[0][2])==-3)
+        return -1;
+    //4-6 Row
+    if ((board[1][0]+board[1][1]+board[1][2])==3)
+        return 1;
+    else if ((board[1][0]+board[1][1]+board[1][2])==-3)
+        return -1;
+    //7-9 Row
+    if ((board[2][0]+board[2][1]+board[2][2])==3)
+        return 1;
+    else if ((board[2][0]+board[2][1]+board[2][2])==-3)
+        return -1;
+
+    //Checking columns
+    //1-7 Column
+    if ((board[0][0]+board[1][0]+board[2][0])==3)
+        return 1;
+    else if ((board[0][0]+board[1][0]+board[2][0])==-3)
+        return -1;
+    //2-8 column
+    if ((board[0][1]+board[1][1]+board[2][1])==3)
+        return 1;
+    else if ((board[0][1]+board[1][1]+board[2][1])==-3)
+        return -1;
+    //3-9 column
+    if ((board[0][2]+board[1][2]+board[2][2])==3)
+        return 1;
+    else if ((board[0][2]+board[1][2]+board[2][2])==-3)
+        return -1;
+
+    //Check for blank spaces
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            if (board[i][j] == 0) return 0;
+        }
+    }
+    return 2;
+}
+
+void MainWindow::progressgame()
+{
+    int check = checkwinner();
+    if (check == 1)
+    {
+        QMessageBox::information(this, "playerWin", "Congrats dawg. You win!");
+        user_score++;
+        endgame();
+        reset();
+    }
+
+    if (check == 2)
+    {
+        QMessageBox::information(this, "Draw", "It's a draw!");
+        draw_score++;
+        endgame();
+        reset();
+    }
+
+    else
+    {
+        move();
+
+        check = checkwinner();
+
+        if(winner == -1)
+        {
+            endgame();
+            QMessageBox::information(this, "Loser", "You lose!");
+            comp_score++;
+            reset();
+        }
+    }
+}
+
+
+void MainWindow::move()
+{
+    int condition = calculate();
+    bool foundEmpty = false;
+
+    if (condition == 4)
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            if(board[i][i] == 0)
+            {
+                board[i][i] = -1;
+                place(i,i);
+                break;
+            }
+        }
+    }
+}
+
+void MainWindow::place(int i, int j)
+{
+    if(i == 0 && j == 0)
+    {
+        ui->p1->setText("O");
+        ui->p1->setDisabled(1);
+    }
+    if(i == 0 && j == 1)
+    {
+        ui->p2->setText("O");
+        ui->p2->setDisabled(1);
+    }
+    if(i == 0 && j == 2)
+    {
+        ui->p3->setText("O");
+        ui->p3->setDisabled(1);
+    }
+    if(i == 1 && j == 0)
+    {
+        ui->p4->setText("O");
+        ui->p4->setDisabled(1);
+    }
+    if(i == 1 && j == 1)
+    {
+        ui->p5->setText("O");
+        ui->p5->setDisabled(1);
+    }
+    if(i == 1 && j == 2)
+    {
+        ui->p6->setText("O");
+        ui->p6->setDisabled(1);
+    }
+    if(i == 2 && j == 0)
+    {
+        ui->p7->setText("O");
+        ui->p7->setDisabled(1);
+    }
+    if(i == 2 && j == 1)
+    {
+        ui->p8->setText("O");
+        ui->p8->setDisabled(1);
+    }
+    if(i == 0 && j == 0)
+    {
+        ui->p9->setText("O");
+        ui->p9->setDisabled(1);
+    }
 }

@@ -72,6 +72,14 @@ private:
     //Game related funcions
     void reset();              //Reset game
     void update();              //Updates score
+    void endgame();             //Ends game
+
+    void calculate();           //Decides AI
+    void place(int i, int j);               //AI places piece
+
+    void checkwinner();            //Checks win conditions
+    void progressgame();        //Progresses the game
+    void move();                //Computer moves
 };
 
 #endif // MAINWINDOW_H
