@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      17,   14, // methods
+      25,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -47,6 +47,14 @@ static const uint qt_meta_data_MainWindow[] = {
      361,   11,   11,   11, 0x08,
      387,   11,   11,   11, 0x08,
      408,   11,   11,   11, 0x08,
+     424,   11,   11,   11, 0x08,
+     440,   11,   11,   11, 0x08,
+     456,   11,   11,   11, 0x08,
+     472,   11,   11,   11, 0x08,
+     488,   11,   11,   11, 0x08,
+     504,   11,   11,   11, 0x08,
+     520,   11,   11,   11, 0x08,
+     536,   11,   11,   11, 0x08,
 
        0        // eod
 };
@@ -64,6 +72,10 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_wstart_clicked()\0on_changeok_clicked()\0"
     "on_changecancel_clicked()\0"
     "on_gameend_clicked()\0on_p1_clicked()\0"
+    "on_p2_clicked()\0on_p3_clicked()\0"
+    "on_p4_clicked()\0on_p5_clicked()\0"
+    "on_p6_clicked()\0on_p7_clicked()\0"
+    "on_p8_clicked()\0on_p9_clicked()\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -89,6 +101,14 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 14: _t->on_changecancel_clicked(); break;
         case 15: _t->on_gameend_clicked(); break;
         case 16: _t->on_p1_clicked(); break;
+        case 17: _t->on_p2_clicked(); break;
+        case 18: _t->on_p3_clicked(); break;
+        case 19: _t->on_p4_clicked(); break;
+        case 20: _t->on_p5_clicked(); break;
+        case 21: _t->on_p6_clicked(); break;
+        case 22: _t->on_p7_clicked(); break;
+        case 23: _t->on_p8_clicked(); break;
+        case 24: _t->on_p9_clicked(); break;
         default: ;
         }
     }
@@ -127,9 +147,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 17)
+        if (_id < 25)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 25;
     }
     return _id;
 }

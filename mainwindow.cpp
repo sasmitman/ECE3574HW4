@@ -171,7 +171,17 @@ void MainWindow::on_actionLogOut_triggered()
 
 void MainWindow::on_actionNewGame_triggered()
 {
-
+    changePage(4);
+    initialize();
+    game_init();
+    ui->gameuser->setText(current_user);
+    for(int i=0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            board[i][j] = 0;
+        }
+    }
 }
 
 void MainWindow::on_actionEndGame_triggered()
@@ -292,6 +302,14 @@ void MainWindow::on_wstart_clicked()
     initialize();
     game_init();
     ui->gameuser->setText(current_user);
+
+    for(int i=0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            board[i][j] = 0;
+        }
+    }
 }
 
 void MainWindow::on_changeok_clicked()
@@ -300,16 +318,29 @@ void MainWindow::on_changeok_clicked()
     {
         if (ui->changenewpwin->text() == ui->changerepwin->text())
         {
-            database.remove(current_user);//Deletes from QMap
-            QVector<QString> temp;
-            temp.append(ui->changenewpwin->text());
-            temp.append(ui->changecolorbox->currentText());
-            database.insert(current_user, temp);
-            temp.clear();
-            writeTo();
-            changePage(0);
-            initialize();
-            login_init();
+            if (ui->changecolorbox->currentText() == database.value(current_user).at(2))
+            {
+                database.remove(current_user);//Deletes from QMap
+                QVector<QString> temp;
+                temp.append(ui->changenewpwin->text());
+                temp.append(ui->changecolorbox->currentText());
+                database.insert(current_user, temp);
+                temp.clear();
+                writeTo();
+                changePage(0);
+                initialize();
+                login_init();
+                ui->changenewpwin->clear();
+                ui->changerepwin->clear();
+                ui->changeoldpwin->clear();
+            }
+            else
+            {
+                QMessageBox::information(this, "ERROR", "Information does not match!");
+                ui->changenewpwin->clear();
+                ui->changerepwin->clear();
+                ui->changeoldpwin->clear();
+            }
         }
         else
         {
@@ -350,12 +381,72 @@ void MainWindow::on_p1_clicked()
     board[0][0] = 1;
     ui->p1->setText("X");
     ui->p1->setDisabled(1);
+    progressgame();
 }
 
-//void MainWindow::on_p1_clicked()
-//{
+void MainWindow::on_p2_clicked()
+{
+    board[0][1] = 1;
+    ui->p2->setText("X");
+    ui->p2->setDisabled(1);
+    progressgame();
+}
 
-//}
+void MainWindow::on_p3_clicked()
+{
+    board[0][2] = 1;
+    ui->p3->setText("X");
+    ui->p3->setDisabled(1);
+    progressgame();
+}
+
+void MainWindow::on_p4_clicked()
+{
+    board[1][0] = 1;
+    ui->p4->setText("X");
+    ui->p4->setDisabled(1);
+    progressgame();
+}
+
+void MainWindow::on_p5_clicked()
+{
+    board[1][1] = 1;
+    ui->p5->setText("X");
+    ui->p5->setDisabled(1);
+    progressgame();
+}
+
+void MainWindow::on_p6_clicked()
+{
+    board[1][2] = 1;
+    ui->p6->setText("X");
+    ui->p6->setDisabled(1);
+    progressgame();
+}
+
+void MainWindow::on_p7_clicked()
+{
+    board[2][0] = 1;
+    ui->p7->setText("X");
+    ui->p7->setDisabled(1);
+    progressgame();
+}
+
+void MainWindow::on_p8_clicked()
+{
+    board[2][1] = 1;
+    ui->p8->setText("X");
+    ui->p8->setDisabled(1);
+    progressgame();
+}
+
+void MainWindow::on_p9_clicked()
+{
+    board[2][2] = 1;
+    ui->p9->setText("X");
+    ui->p9->setDisabled(1);
+    progressgame();
+}
 
 void MainWindow::paintEvent(QPaintEvent * e)
 {
@@ -375,7 +466,12 @@ void MainWindow::paintEvent(QPaintEvent * e)
 
 void MainWindow::reset()
 {
-    \
+    update();
+
+    ui->compscore->setReadOnly(true);
+    ui->userscore->setReadOnly(true);
+    ui->drawscore->setReadOnly(true);
+
     ui->p1->setText("");
     ui->p2->setText("");
     ui->p3->setText("");
@@ -412,7 +508,7 @@ void MainWindow::update()
     ui->drawscore->setText(QString::number(draw_score));
 }
 
-void MainWindow::endGame()
+void MainWindow::endgame()
 {
     ui->p1->setDisabled(1);
     ui->p2->setDisabled(1);
@@ -425,13 +521,16 @@ void MainWindow::endGame()
     ui->p9->setDisabled(1);
 }
 
-void MainWindow::calculate()
+int MainWindow::calculate()
 {
+    int total;
     //check diagonals
-    if((board[0][0] + board[1][1] + board[2][2]) > 1) return 4;
-    if((board[0][2] + board[1][1] + board[2][0]) > 1) return -4;
+    total = (board[0][0] + board[1][1] + board[2][2]);
+    if(total > 1) return 4;
+    total =(board[0][2] + board[1][1] + board[2][0]);
+    if( total > 1) return -4;
 
-    int total = 0;
+    total = 0;
     //check rows
     for(int i = 0; i < 3; i++)
     {
@@ -457,60 +556,59 @@ void MainWindow::calculate()
     return 0;   //return 0 if no close wins
 }
 
-void MainWindow::checkwinner() //Checks to see if there is a winner
+int MainWindow::checkwinner() //Checks to see if there is a winner
 
 {
     //Checking 1-9 diagonal
-    if ((board[0][0]+board[1][1]+board[2][2])==3)
+    int sum = 0;
+    sum = board[0][0]+board[1][1]+board[2][2];
+    if (sum == 3)
         return 1;
-    else if ((board[0][0]+board[1][1]+board[2][2])==-3)
+    else if (sum == -3)
         return -1;
     //Checking 3-6 diagonal
-    if ((board[0][2]+board[1][1]+board[2][0])==3)
+    sum =(board[0][2]+board[1][1]+board[2][0]);
+    if (sum==3)
         return 1;
-    else if ((board[0][2]+board[1][1]+board[2][0])==-3)
+    else if (sum==-3)
         return -1;
 
-    //Checking rows
-    //1-3 row
-    if ((board[0][0]+board[0][1]+board[0][2])==3)
-        return 1;
-    else if ((board[0][0]+board[0][1]+board[0][2])==-3)
-        return -1;
-    //4-6 Row
-    if ((board[1][0]+board[1][1]+board[1][2])==3)
-        return 1;
-    else if ((board[1][0]+board[1][1]+board[1][2])==-3)
-        return -1;
-    //7-9 Row
-    if ((board[2][0]+board[2][1]+board[2][2])==3)
-        return 1;
-    else if ((board[2][0]+board[2][1]+board[2][2])==-3)
-        return -1;
-
-    //Checking columns
-    //1-7 Column
-    if ((board[0][0]+board[1][0]+board[2][0])==3)
-        return 1;
-    else if ((board[0][0]+board[1][0]+board[2][0])==-3)
-        return -1;
-    //2-8 column
-    if ((board[0][1]+board[1][1]+board[2][1])==3)
-        return 1;
-    else if ((board[0][1]+board[1][1]+board[2][1])==-3)
-        return -1;
-    //3-9 column
-    if ((board[0][2]+board[1][2]+board[2][2])==3)
-        return 1;
-    else if ((board[0][2]+board[1][2]+board[2][2])==-3)
-        return -1;
-
-    //Check for blank spaces
+    sum = 0;
+    //check rows
     for(int i = 0; i < 3; i++)
     {
         for(int j = 0; j < 3; j++)
         {
-            if (board[i][j] == 0) return 0;
+            sum += board[i][j];
+        }
+        if(sum == 3)
+            return 1;
+        else if(sum == -3)
+            return -1;
+        sum = 0;
+    }
+
+    //check columns
+    sum = 0;
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            sum += board[j][i];
+        }
+        if(sum == 3)
+            return 1;
+        else if(sum == -3)
+            return -1;
+        sum = 0;
+    }
+    //check for empty spaces
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            if (board[j][i] == 0)
+                return 0;
         }
     }
     return 2;
@@ -521,17 +619,17 @@ void MainWindow::progressgame()
     int check = checkwinner();
     if (check == 1)
     {
+        endgame();
         QMessageBox::information(this, "playerWin", "Congrats dawg. You win!");
         user_score++;
-        endgame();
         reset();
     }
 
     if (check == 2)
     {
+        endgame();
         QMessageBox::information(this, "Draw", "It's a draw!");
         draw_score++;
-        endgame();
         reset();
     }
 
@@ -541,7 +639,7 @@ void MainWindow::progressgame()
 
         check = checkwinner();
 
-        if(winner == -1)
+        if(check == -1)
         {
             endgame();
             QMessageBox::information(this, "Loser", "You lose!");
@@ -567,6 +665,61 @@ void MainWindow::move()
                 place(i,i);
                 break;
             }
+        }
+    }
+
+    else if (condition == -4)
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            if(board[i][2-i] == 0)
+            {
+                board[i][2-i] = -1;
+                place(i,2-i);
+                break;
+            }
+        }
+    }
+    else if(condition > 0 && condition < 4)
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            if(board[condition-1][i] == 0)
+            {
+                board[condition-1][i] = -1;
+                place(condition-1,i);
+                break;
+            }
+        }
+    }
+    else if(condition < 0 && condition > -4)
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            if(board[i][(-condition)-1] == 0)
+            {
+                board[i][(-condition)-1] = -1;
+                place(i,(-condition)-1);
+                break;
+            }
+        }
+    }
+    else if(condition == 0)
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+                if(board[i][j] == 0)
+                {
+                    board[i][j] = -1;
+                    place(i,j);
+                    foundEmpty = true;
+                    break;
+                }
+
+            }
+            if(foundEmpty) break;
         }
     }
 }

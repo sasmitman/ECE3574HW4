@@ -248,7 +248,7 @@ public:
         label_2->setGeometry(QRect(200, 30, 71, 17));
         gameuser = new QLabel(Game);
         gameuser->setObjectName(QString::fromUtf8("gameuser"));
-        gameuser->setGeometry(QRect(200, 80, 71, 20));
+        gameuser->setGeometry(QRect(200, 75, 71, 20));
         label_4 = new QLabel(Game);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setGeometry(QRect(200, 120, 66, 17));
@@ -322,7 +322,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

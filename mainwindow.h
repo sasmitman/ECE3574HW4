@@ -44,14 +44,14 @@ private slots:
     void on_gameend_clicked();
     //Each grid of the tic tac toe board's slots
     void on_p1_clicked();
-    /*void on_p2_clicked();
+    void on_p2_clicked();
     void on_p3_clicked();
     void on_p4_clicked();
     void on_p5_clicked();
     void on_p6_clicked();
     void on_p7_clicked();
     void on_p8_clicked();
-    void on_p9_clicked();*/
+    void on_p9_clicked();
 private:
     Ui::MainWindow *ui;
     QMap<QString, QVector<QString> > database;
@@ -74,10 +74,10 @@ private:
     void update();              //Updates score
     void endgame();             //Ends game
 
-    void calculate();           //Decides AI
+    int calculate();           //Decides AI
     void place(int i, int j);               //AI places piece
 
-    void checkwinner();            //Checks win conditions
+    int checkwinner();            //Checks win conditions
     void progressgame();        //Progresses the game
     void move();                //Computer moves
 };
