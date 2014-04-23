@@ -72,6 +72,8 @@ public:
     QLineEdit *changerepwin;
     QPushButton *changeok;
     QPushButton *changecancel;
+    QLabel *changelabel;
+    QWidget *Game;
     QMenuBar *menuBar;
     QMenu *menuUser;
     QMenu *menuGame;
@@ -100,7 +102,7 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         stackedWidget = new QStackedWidget(centralWidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        stackedWidget->setGeometry(QRect(0, -1, 391, 261));
+        stackedWidget->setGeometry(QRect(0, 0, 391, 261));
         Login = new QWidget();
         Login->setObjectName(QString::fromUtf8("Login"));
         loginlabelname = new QLabel(Login);
@@ -174,35 +176,44 @@ public:
         change_password->setObjectName(QString::fromUtf8("change_password"));
         oldpasslabel = new QLabel(change_password);
         oldpasslabel->setObjectName(QString::fromUtf8("oldpasslabel"));
-        oldpasslabel->setGeometry(QRect(30, 70, 111, 17));
+        oldpasslabel->setGeometry(QRect(30, 80, 141, 17));
         newpasslabel = new QLabel(change_password);
         newpasslabel->setObjectName(QString::fromUtf8("newpasslabel"));
-        newpasslabel->setGeometry(QRect(30, 110, 121, 17));
+        newpasslabel->setGeometry(QRect(30, 120, 161, 17));
         newpassreenter = new QLabel(change_password);
         newpassreenter->setObjectName(QString::fromUtf8("newpassreenter"));
-        newpassreenter->setGeometry(QRect(30, 150, 141, 17));
+        newpassreenter->setGeometry(QRect(30, 160, 161, 21));
         changecolor = new QLabel(change_password);
         changecolor->setObjectName(QString::fromUtf8("changecolor"));
-        changecolor->setGeometry(QRect(30, 40, 66, 17));
+        changecolor->setGeometry(QRect(30, 50, 66, 17));
         changecolorbox = new QComboBox(change_password);
         changecolorbox->setObjectName(QString::fromUtf8("changecolorbox"));
-        changecolorbox->setGeometry(QRect(220, 30, 78, 27));
+        changecolorbox->setGeometry(QRect(220, 40, 78, 27));
         changeoldpwin = new QLineEdit(change_password);
         changeoldpwin->setObjectName(QString::fromUtf8("changeoldpwin"));
-        changeoldpwin->setGeometry(QRect(210, 60, 113, 27));
+        changeoldpwin->setGeometry(QRect(210, 70, 113, 27));
+        changeoldpwin->setEchoMode(QLineEdit::Password);
         changenewpwin = new QLineEdit(change_password);
         changenewpwin->setObjectName(QString::fromUtf8("changenewpwin"));
-        changenewpwin->setGeometry(QRect(210, 110, 113, 27));
+        changenewpwin->setGeometry(QRect(210, 120, 113, 27));
+        changenewpwin->setEchoMode(QLineEdit::Password);
         changerepwin = new QLineEdit(change_password);
         changerepwin->setObjectName(QString::fromUtf8("changerepwin"));
-        changerepwin->setGeometry(QRect(210, 150, 113, 27));
+        changerepwin->setGeometry(QRect(210, 160, 113, 27));
+        changerepwin->setEchoMode(QLineEdit::Password);
         changeok = new QPushButton(change_password);
         changeok->setObjectName(QString::fromUtf8("changeok"));
         changeok->setGeometry(QRect(170, 200, 98, 27));
         changecancel = new QPushButton(change_password);
         changecancel->setObjectName(QString::fromUtf8("changecancel"));
         changecancel->setGeometry(QRect(280, 200, 98, 27));
+        changelabel = new QLabel(change_password);
+        changelabel->setObjectName(QString::fromUtf8("changelabel"));
+        changelabel->setGeometry(QRect(20, 10, 341, 20));
         stackedWidget->addWidget(change_password);
+        Game = new QWidget();
+        Game->setObjectName(QString::fromUtf8("Game"));
+        stackedWidget->addWidget(Game);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -233,7 +244,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -283,6 +294,7 @@ public:
         );
         changeok->setText(QApplication::translate("MainWindow", "OK", 0, QApplication::UnicodeUTF8));
         changecancel->setText(QApplication::translate("MainWindow", "Cancel", 0, QApplication::UnicodeUTF8));
+        changelabel->setText(QString());
         menuUser->setTitle(QApplication::translate("MainWindow", "User", 0, QApplication::UnicodeUTF8));
         menuGame->setTitle(QApplication::translate("MainWindow", "Game", 0, QApplication::UnicodeUTF8));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));

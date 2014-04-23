@@ -18,13 +18,13 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>-1</y>
+      <y>0</y>
       <width>391</width>
       <height>261</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Login">
      <widget class="QLabel" name="loginlabelname">
@@ -300,8 +300,8 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>70</y>
-        <width>111</width>
+        <y>80</y>
+        <width>141</width>
         <height>17</height>
        </rect>
       </property>
@@ -313,8 +313,8 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>110</y>
-        <width>121</width>
+        <y>120</y>
+        <width>161</width>
         <height>17</height>
        </rect>
       </property>
@@ -326,9 +326,9 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>150</y>
-        <width>141</width>
-        <height>17</height>
+        <y>160</y>
+        <width>161</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -339,7 +339,7 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>40</y>
+        <y>50</y>
         <width>66</width>
         <height>17</height>
        </rect>
@@ -352,7 +352,7 @@
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>30</y>
+        <y>40</y>
         <width>78</width>
         <height>27</height>
        </rect>
@@ -387,30 +387,39 @@
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>60</y>
+        <y>70</y>
         <width>113</width>
         <height>27</height>
        </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
       </property>
      </widget>
      <widget class="QLineEdit" name="changenewpwin">
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>110</y>
+        <y>120</y>
         <width>113</width>
         <height>27</height>
        </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
       </property>
      </widget>
      <widget class="QLineEdit" name="changerepwin">
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>150</y>
+        <y>160</y>
         <width>113</width>
         <height>27</height>
        </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="changeok">
@@ -439,7 +448,21 @@
        <string>Cancel</string>
       </property>
      </widget>
+     <widget class="QLabel" name="changelabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
+    <widget class="QWidget" name="Game"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

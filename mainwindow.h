@@ -18,12 +18,13 @@ public:
     ~MainWindow();
     void changePage(int i);//Changes the pages of the stacked widget
     void readFile();    //Read from file and put into QMap
-    void writeTo(QString username);     //Write everything from QMap into file
+    void writeTo();     //Write everything from QMap into file
 
 private slots:
     //User menu slots
     void on_actionRegisterUser_triggered();//Register user menu
     void on_actionExit_triggered();        //Exit
+    void on_actionLogOut_triggered();       //Logout
     //Login page
     void on_loginlogin_clicked();//Login button
     void on_loginexit_clicked();//Exit button
@@ -32,6 +33,11 @@ private slots:
     void on_regCancel_clicked();//cancel button
     //Welcome page slots
     void on_wchangepw_clicked();//Change password button
+    void on_wexit_clicked();    //Exit button
+    void on_wstart_clicked();   //Start button
+    //Change password slots
+    void on_changeok_clicked();//OK button
+    void on_changecancel_clicked();//Cancel button
 private:
     Ui::MainWindow *ui;
     QMap<QString, QVector<QString> > database;
