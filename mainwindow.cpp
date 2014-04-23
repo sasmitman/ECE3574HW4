@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "QAction"
+#include <QAction>
 #include "QPushButton"
 #include "QLineEdit"
 #include "QMap"
@@ -27,12 +27,75 @@ MainWindow::MainWindow(QWidget *parent) :
     readFile();
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
+    initialize();
+    login_init();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::initialize()
+{
+    ui->actionRegisterUser->setEnabled(1);
+    ui->actionLogOut->setEnabled(1);
+    ui->actionExit->setEnabled(1);
+    ui->actionNewGame->setEnabled(1);
+    ui->actionEndGame->setEnabled(1);
+    ui->actionChangepw->setEnabled(1);
+}
+
+void MainWindow::login_init()
+{
+    ui->actionRegisterUser->setEnabled(1);
+    ui->actionLogOut->setDisabled(1);
+    ui->actionExit->setEnabled(1);
+    ui->actionNewGame->setDisabled(1);
+    ui->actionEndGame->setDisabled(1);
+    ui->actionChangepw->setDisabled(1);
+}
+
+void MainWindow::reg_init()
+{
+    ui->actionRegisterUser->setDisabled(1);
+    ui->actionLogOut->setDisabled(1);
+    ui->actionExit->setEnabled(1);
+    ui->actionNewGame->setDisabled(1);
+    ui->actionEndGame->setDisabled(1);
+    ui->actionChangepw->setDisabled(1);
+}
+
+void MainWindow::welcome_init()
+{
+    ui->actionRegisterUser->setDisabled(1);
+    ui->actionLogOut->setEnabled(1);
+    ui->actionExit->setEnabled(1);
+    ui->actionNewGame->setEnabled(1);
+    ui->actionEndGame->setDisabled(1);
+    ui->actionChangepw->setEnabled(1);
+}
+
+void MainWindow::change_init()
+{
+    ui->actionRegisterUser->setDisabled(1);
+    ui->actionLogOut->setEnabled(1);
+    ui->actionExit->setEnabled(1);
+    ui->actionNewGame->setDisabled(1);
+    ui->actionEndGame->setDisabled(1);
+    ui->actionChangepw->setDisabled(1);
+}
+
+void MainWindow::game_init()
+{
+    ui->actionRegisterUser->setDisabled(1);
+    ui->actionLogOut->setEnabled(1);
+    ui->actionExit->setEnabled(1);
+    ui->actionNewGame->setDisabled(1);
+    ui->actionEndGame->setEnabled(1);
+    ui->actionChangepw->setDisabled(1);
+}
+
 
 void MainWindow::readFile()
 {
@@ -82,6 +145,8 @@ void MainWindow::changePage(int i)
 void MainWindow::on_actionRegisterUser_triggered()
 {
     changePage(1);//Changes page to register user page (1)
+    initialize();
+    reg_init();
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -91,27 +156,22 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionLogOut_triggered()
 {
-    if (current_user == "")
-        QMessageBox::information(this, "ERROR", "User is not signed in");
-    else
-    {
-        current_user = "";
-        changePage(0);
-    }
+    current_user = "";
+    changePage(0);
+    initialize();
+    login_init();
 }
 
 void MainWindow::on_actionNewGame_triggered()
 {
-    if (current_user == "")
-        QMessageBox::information(this, "ERROR", "User is not signed in");
+
 }
 
 void MainWindow::on_actionChangepw_triggered()
 {
-    if (current_user == "")
-        QMessageBox::information(this, "ERROR", "User is not signed in");
-    else
-        changePage(3);
+    changePage(3);//change password page
+    initialize();
+    change_init();
 }
 
 void MainWindow::on_regOK_clicked()
@@ -139,12 +199,16 @@ void MainWindow::on_regOK_clicked()
         temp.clear();
         writeTo();
         changePage(0);
+        initialize();
+        login_init();
     }
 }
 
 void MainWindow::on_regCancel_clicked()
 {
     changePage(0);
+    initialize();
+    login_init();
 }
 
 void MainWindow::on_loginlogin_clicked()
@@ -159,6 +223,8 @@ void MainWindow::on_loginlogin_clicked()
             ui->changelabel->setText("Changing password for "+current_user);
             ui->welcomelabel->setText("Welcome "+current_user);
             changePage(2);
+            initialize();
+            welcome_init();
         }
         else
             QMessageBox::information(this, "ERROR", "Wrong username or password");
@@ -177,6 +243,8 @@ void MainWindow::on_loginexit_clicked()
 void MainWindow::on_wchangepw_clicked()
 {
     changePage(3);
+    initialize();
+    change_init();
 }
 
 void MainWindow::on_wexit_clicked()
@@ -187,6 +255,8 @@ void MainWindow::on_wexit_clicked()
 void MainWindow::on_wstart_clicked()
 {
     changePage(4);
+    initialize();
+    game_init();
 }
 
 void MainWindow::on_changeok_clicked()
@@ -203,6 +273,8 @@ void MainWindow::on_changeok_clicked()
             temp.clear();
             writeTo();
             changePage(0);
+            initialize();
+            login_init();
         }
         else
             QMessageBox::information(this, "ERROR", "Passwords do not match");
@@ -214,4 +286,6 @@ void MainWindow::on_changeok_clicked()
 void MainWindow::on_changecancel_clicked()
 {
     changePage(2);
+    initialize();
+    welcome_init();
 }

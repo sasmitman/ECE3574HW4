@@ -19,6 +19,13 @@ public:
     void changePage(int i);//Changes the pages of the stacked widget
     void readFile();    //Read from file and put into QMap
     void writeTo();     //Write everything from QMap into file
+    void initialize();  //Initializes all menu
+    void login_init();
+    void reg_init();
+    void welcome_init();
+    void change_init();
+    void game_init();
+
 
 private slots:
     //User menu slots
