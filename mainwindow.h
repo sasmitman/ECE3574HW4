@@ -20,11 +20,11 @@ public:
     void readFile();    //Read from file and put into QMap
     void writeTo();     //Write everything from QMap into file
     void initialize();  //Initializes all menu
-    void login_init();
-    void reg_init();
-    void welcome_init();
-    void change_init();
-    void game_init();
+    void login_init();  //Initializes login menus
+    void reg_init();    //Initializes register user menu
+    void welcome_init();//Initializes welcome user menu
+    void change_init(); //Initialize change password menu
+    void game_init();   //
 
 
 private slots:
