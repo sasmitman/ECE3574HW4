@@ -32,6 +32,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->stackedWidget->setCurrentIndex(0);
     initialize();
     login_init();
+    ui->compscore->setReadOnly(1);
+    ui->userscore->setReadOnly(1);
+    ui->drawscore->setReadOnly(1);
 }
 
 MainWindow::~MainWindow()
@@ -241,7 +244,7 @@ void MainWindow::on_loginlogin_clicked()
     if (database.contains(user))
     {
         if(database.value(user).at(0) == password)
-        {   current_user =user;
+        {   current_user = user;
             ui->changelabel->setText("Changing password for "+current_user);
             ui->welcomelabel->setText("Welcome "+current_user);
             changePage(2);
@@ -251,10 +254,16 @@ void MainWindow::on_loginlogin_clicked()
             ui->loginpwin->clear();
         }
         else
+        {
+            ui->loginuserin->clear();
+            ui->loginpwin->text();
             QMessageBox::information(this, "ERROR", "Wrong username or password");
+        }
     }
     else
     {
+        ui->loginuserin->clear();
+        ui->loginpwin->clear();
         QMessageBox::information(this, "ERROR", "Wrong username or password");
     }
 }
@@ -334,18 +343,65 @@ void MainWindow::on_gameend_clicked()
     initialize();
     welcome_init();
 }
+//Game slots
+void MainWindow::on_p1_clicked()
+{
+    board[0][0] = 1;
+    ui->p1->setText("X");
+    ui->p1->setDisabled(1);
+}
 
 void MainWindow::paintEvent(QPaintEvent * e)
 {
-QPainter painter(this);
-QPen linePen(Qt::red);
-linePen.setWidth(80);
+    QPainter painter(this);
+    QPen linePen(Qt::red);
+    linePen.setWidth(80);
 
-if (ui->stackedWidget->currentIndex() == 4)
-{
-painter.drawLine(54,80,54,200);
-painter.drawLine(95,80,95,200);
-painter.drawLine(15,115,147,115);
-painter.drawLine(15,155,147,155);
+    if (ui->stackedWidget->currentIndex() == 4)
+    {
+        painter.drawLine(54,80,54,200);
+        painter.drawLine(95,80,95,200);
+        painter.drawLine(15,115,147,115);
+        painter.drawLine(15,155,147,155);
+    }
 }
+
+
+void MainWindow::reset()
+{
+\
+    ui->p1->setText("");
+    ui->p2->setText("");
+    ui->p3->setText("");
+    ui->p4->setText("");
+    ui->p5->setText("");
+    ui->p6->setText("");
+    ui->p7->setText("");
+    ui->p8->setText("");
+    ui->p9->setText("");
+
+    ui->p1->setEnabled(1);
+    ui->p2->setEnabled(1);
+    ui->p3->setEnabled(1);
+    ui->p4->setEnabled(1);
+    ui->p5->setEnabled(1);
+    ui->p6->setEnabled(1);
+    ui->p7->setEnabled(1);
+    ui->p8->setEnabled(1);
+    ui->p9->setEnabled(1);
+
+    for(int i=0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            board[i][j] = 0;
+        }
+    }
+}
+
+void MainWindow::update()
+{
+ui->userscore->setText(QString::number(user_score));
+ui->compscore->setText(QString::number(comp_score));
+ui->drawscore->setText(QString::number(draw_score));
 }

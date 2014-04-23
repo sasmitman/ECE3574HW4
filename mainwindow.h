@@ -16,18 +16,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void changePage(int i);//Changes the pages of the stacked widget
-    void readFile();    //Read from file and put into QMap
-    void writeTo();     //Write everything from QMap into file
-    void initialize();  //Initializes all menu
-    void login_init();  //Initializes login menus
-    void reg_init();    //Initializes register user menu
-    void welcome_init();//Initializes welcome user menu
-    void change_init(); //Initialize change password menu
-    void game_init();   //Initialize game menu
-
-    void paintEvent(QPaintEvent * e);    //Draw tic-tac-toe grid
-
 
 private slots:
     //User menu slots
@@ -54,9 +42,36 @@ private slots:
     void on_changecancel_clicked();//Cancel button
     //Game slots
     void on_gameend_clicked();
+    //Each grid of the tic tac toe board's slots
+    void on_p1_clicked();
+    /*void on_p2_clicked();
+    void on_p3_clicked();
+    void on_p4_clicked();
+    void on_p5_clicked();
+    void on_p6_clicked();
+    void on_p7_clicked();
+    void on_p8_clicked();
+    void on_p9_clicked();*/
 private:
     Ui::MainWindow *ui;
     QMap<QString, QVector<QString> > database;
+    int board [3][3];   //Tic tac toe board
+    int user_score, comp_score, draw_score; //To keep track of the score
+    //Menu functions
+    void changePage(int i);//Changes the pages of the stacked widget
+    void readFile();    //Read from file and put into QMap
+    void writeTo();     //Write everything from QMap into file
+    void initialize();  //Initializes all menu
+    void login_init();  //Initializes login menus
+    void reg_init();    //Initializes register user menu
+    void welcome_init();//Initializes welcome user menu
+    void change_init(); //Initialize change password menu
+    void game_init();   //Initialize game menu
+
+    void paintEvent(QPaintEvent * e);    //Draw tic-tac-toe grid
+    //Game related funcions
+    void reset();              //Reset game
+    void update();              //Updates score
 };
 
 #endif // MAINWINDOW_H

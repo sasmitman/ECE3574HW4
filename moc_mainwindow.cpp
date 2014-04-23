@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      17,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -46,6 +46,7 @@ static const uint qt_meta_data_MainWindow[] = {
      339,   11,   11,   11, 0x08,
      361,   11,   11,   11, 0x08,
      387,   11,   11,   11, 0x08,
+     408,   11,   11,   11, 0x08,
 
        0        // eod
 };
@@ -62,7 +63,7 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_wchangepw_clicked()\0on_wexit_clicked()\0"
     "on_wstart_clicked()\0on_changeok_clicked()\0"
     "on_changecancel_clicked()\0"
-    "on_gameend_clicked()\0"
+    "on_gameend_clicked()\0on_p1_clicked()\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -87,6 +88,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 13: _t->on_changeok_clicked(); break;
         case 14: _t->on_changecancel_clicked(); break;
         case 15: _t->on_gameend_clicked(); break;
+        case 16: _t->on_p1_clicked(); break;
         default: ;
         }
     }
@@ -125,9 +127,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 17;
     }
     return _id;
 }

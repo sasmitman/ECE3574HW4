@@ -242,25 +242,25 @@ public:
         Game->setObjectName(QString::fromUtf8("Game"));
         label = new QLabel(Game);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(290, 10, 66, 17));
+        label->setGeometry(QRect(300, 10, 66, 17));
         label_2 = new QLabel(Game);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(220, 30, 71, 17));
+        label_2->setGeometry(QRect(200, 30, 71, 17));
         gameuser = new QLabel(Game);
         gameuser->setObjectName(QString::fromUtf8("gameuser"));
-        gameuser->setGeometry(QRect(215, 75, 71, 20));
+        gameuser->setGeometry(QRect(200, 80, 71, 20));
         label_4 = new QLabel(Game);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(220, 110, 66, 17));
+        label_4->setGeometry(QRect(200, 120, 66, 17));
         compscore = new QLineEdit(Game);
         compscore->setObjectName(QString::fromUtf8("compscore"));
-        compscore->setGeometry(QRect(300, 30, 51, 27));
+        compscore->setGeometry(QRect(300, 30, 81, 27));
         userscore = new QLineEdit(Game);
         userscore->setObjectName(QString::fromUtf8("userscore"));
-        userscore->setGeometry(QRect(300, 70, 51, 27));
+        userscore->setGeometry(QRect(300, 70, 81, 27));
         drawscore = new QLineEdit(Game);
         drawscore->setObjectName(QString::fromUtf8("drawscore"));
-        drawscore->setGeometry(QRect(300, 110, 51, 27));
+        drawscore->setGeometry(QRect(300, 110, 81, 27));
         gameend = new QPushButton(Game);
         gameend->setObjectName(QString::fromUtf8("gameend"));
         gameend->setGeometry(QRect(280, 200, 98, 27));
@@ -322,7 +322,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
